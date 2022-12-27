@@ -38,7 +38,6 @@ function listPaymentsExpired(data) {
   <div>Amount: ${data.amount}</div>
   <div>Amount fee: ${data.amount_fee}</div>
   <div>User ID(delete): ${data.user_id}</div>
-  hola
   <hr></hr>
   `;
 }

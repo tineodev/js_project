@@ -47,6 +47,7 @@ htmlForm.onsubmit = async function (event) {
     // console.log(body_json)
     if (response.ok) {
       console.log('Guardado')
+      window.location.replace('/')
     } else {
     console.log('No_guardado')
 	}
