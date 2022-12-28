@@ -22,9 +22,10 @@ formLogin.onsubmit = async function (event) {
     };
     const response = await fetch('http://127.0.0.1:8000/token/', options);
     const data = await response.json();
-    
+    console.log(data)
     if (data.detail) {
       // !Añadir alerta
+      // console.log('error')
       window.location.replace('/login/html/login.html')
     } else {
       const responseID = await fetch(`http://127.0.0.1:8000/users/${body.username}/`);

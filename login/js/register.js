@@ -15,28 +15,29 @@ htmlForm.onsubmit = async function (event) {
   const password1 = htmlForm.elements.password1.value;
   const password2 = htmlForm.elements.password2.value;
   const email = htmlForm.elements.email.value;
-  const csrf_token = htmlForm.elements.csrfmiddlewaretoken.value;
 
   const user = {
     first_name: first_name,
     last_name: last_name,
     username: username,
     email: email,
-    password1: password1,
+    password: password1,
     password2: password2,
-    csrfmiddlewaretoken: csrf_token,
   };
 
   try {
     const options = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(user),
     };
-    console.log(JSON.stringify(user));
-    const response = await fetch("http://127.0.0.1:8000/register/", options);
+    // console.log(JSON.stringify(user));
+    const response = await fetch("http://127.0.0.1:8000/users/", options);
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
+    window.location.reload();
   } catch (error) {
     console.log(error);
   }
