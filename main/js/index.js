@@ -1,6 +1,8 @@
 const html_payments = document.querySelector("#htmlPayments");
 const html_expired = document.querySelector("#htmlExpired");
 const services = JSON.parse(localStorage.getItem('listaServicios')) ?? getServices()
+const localToken = JSON.parse(localStorage.getItem('localToken')) ?? window.location.replace('/login/html/login.html')
+
 
 async function getServices() {
   try {
@@ -22,8 +24,15 @@ async function getServices() {
 
 async function apiGET(pm_element, pm_service, pm_function, pm_user) {
   try {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer ' + localToken.access
+      },
+    };
     const url = `http://127.0.0.1:8000/${pm_service}/`;
-    const response = await fetch(url);
+    const response = await fetch(url, options);
     const data = await response.json();
 
     console.log(data.results);

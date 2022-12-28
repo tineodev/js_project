@@ -31,6 +31,7 @@ formLogin.onsubmit = async function (event) {
       const dataID = await responseID.json();
       localStorage.setItem('localID', JSON.stringify(dataID))
       localStorage.setItem('localToken', JSON.stringify(data))
+      window.location.replace('/main/html/index.html')
     }
   } catch (error) {
     console.log(error)

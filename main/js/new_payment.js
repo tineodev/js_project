@@ -1,13 +1,22 @@
 const htmlSelect = document.querySelector('#html_select')
 const htmlForm = document.querySelector('form')
 const htmlInputs = document.querySelectorAll('input')
-const localUser = 1 //reemplazar con localstorage
-// async function apiGET(pm_element, pm_service, pm_function, pm_user) {
+const localToken = JSON.parse(localStorage.getItem('localToken')) ?? window.location.replace('/login/html/login.html')
+const localID = JSON.parse(localStorage.getItem('localID')) ?? window.location.replace('/login/html/login.html')
+
 async function apiGET() {
 
   try {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer ' + localToken.access
+      },
+    };
+
     const url = `http://127.0.0.1:8000/services/`;
-    const response = await fetch(url);
+    const response = await fetch(url, options);
     const data = await response.json();
 
     console.log(data);
@@ -20,7 +29,6 @@ async function apiGET() {
   }
 }
 
-// apiGET(htmlSelect, 'Services', )
 apiGET()
 
 htmlForm.onsubmit = async function (event) {
@@ -29,7 +37,7 @@ htmlForm.onsubmit = async function (event) {
   const body = {
     service_id: htmlSelect.value,
     payment_date:today.toISOString().slice(0,10),
-    user_id: localUser
+    user_id: localID.id
   }
 
   htmlInputs.forEach((input) => {
@@ -40,11 +48,13 @@ htmlForm.onsubmit = async function (event) {
   try {
     const options = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + localToken.access
+    },
       body: body_json,
     };
     const response = await fetch(`http://127.0.0.1:8000/payments/`, options);
-    // console.log(body_json)
     if (response.ok) {
       console.log('Guardado')
       window.location.replace('/')
