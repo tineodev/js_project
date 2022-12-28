@@ -1,8 +1,15 @@
 const html_payments = document.querySelector("#htmlPayments");
 const html_expired = document.querySelector("#htmlExpired");
-const services = JSON.parse(localStorage.getItem('listaServicios')) ?? getServices()
+
+const services = JSON.parse(localStorage.getItem('localServices')) ?? getServices()
 const localToken = JSON.parse(localStorage.getItem('localToken')) ?? window.location.replace('/login/html/login.html')
 
+const htmlLogout = document.querySelector('#htmlLogout')
+const htmlUsername = document.querySelector('#htmlUsername')
+const localID = JSON.parse(localStorage.getItem('localID')) ?? window.location.replace('/login/html/login.html')
+
+
+htmlUsername.innerText = `${localID.username.toUpperCase()}`
 
 async function getServices() {
   try {
@@ -15,7 +22,7 @@ async function getServices() {
       delete record.prefix
     });
 
-    localStorage.setItem('listaServicios', JSON.stringify(data))
+    localStorage.setItem('localServices', JSON.stringify(data))
   } catch (error) {
     console.log(error);
   }
@@ -81,6 +88,12 @@ function listPaymentsExpired(data) {
   `;
 }
 
+htmlLogout.onclick = function (event) {
+  localStorage.removeItem('localID')
+  localStorage.removeItem('localToken')
+  localStorage.removeItem('localServices')
+  window.location.reload();
+}
 
 apiGET(html_payments, 'payments', listPayments, 1);
 apiGET(html_expired, 'payments-expired', listPaymentsExpired, 1);
