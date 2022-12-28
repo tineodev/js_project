@@ -1,5 +1,7 @@
 const html_forms = document.querySelector("form");
 const inputs = document.querySelectorAll("input");
+const localToken = JSON.parse(localStorage.getItem('localToken')) ?? window.location.replace('/login/html/login.html')
+const localID = JSON.parse(localStorage.getItem('localID')) ?? window.location.replace('/login/html/login.html')
 
 async function actualizarvalores() {
   const response = await fetch(`http://127.0.0.1:8000/services/${getID('id')}/`);
@@ -26,7 +28,10 @@ html_forms.onsubmit = async function (event) {
   try {
     const options = {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer ' + localToken.access
+      },
       body: body_json,
     };
 
