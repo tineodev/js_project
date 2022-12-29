@@ -12,7 +12,7 @@ htmlUsername.innerText = `Welcome, ${localID.username.toUpperCase()}`
 
 if (!localID.is_staff) {
   Swal.fire("I'm sorry", "Only administrators can access", "error").then(() =>
-    window.location.replace("/login/html/login.html")
+    window.location.replace("/js_project/main/html/payments.html")
   );
 }
 

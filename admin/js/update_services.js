@@ -16,7 +16,7 @@ if (!localID.is_staff) {
     "I'm sorry",
     'Only administrators can access',
     'error'
-  ).then(() => (window.location.replace("/main/html/index.html"))); 
+  ).then(() => (window.location.replace("/js_project/main/html/payments.html"))); 
 }
 
 
