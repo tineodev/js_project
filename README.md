@@ -2,8 +2,8 @@
 Este es un proyecto de Silabuz Academy del Curso MPTE BE de la Unidad 07.
 
 # Enlace Railway
-- **Unidad JavaScript pendiente** - [Frontend](https://tineodev.github.io/js_project/index.html))
-- **Unidad Django REST pendiente** - [Backend](https://restproject-production.up.railway.app/)
+- **Unidad JavaScript** - [Frontend](https://tineodev.github.io/js_project/index.html)
+- **Unidad Django REST** - [Backend](https://restproject-production.up.railway.app/)
 
 
 
