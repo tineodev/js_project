@@ -1,10 +1,6 @@
 const htmlSelect = document.querySelector("#html_select");
-
 const htmlForm = document.querySelector("#htmlForm");
-
 const htmlInputs = document.querySelectorAll("input");
-console.log(htmlForm)
-console.log(htmlInputs)
 
 const localToken = JSON.parse(localStorage.getItem("localToken")) ?? window.location.replace("/login/html/login.html");
 const localID = JSON.parse(localStorage.getItem("localID")) ?? window.location.replace("/login/html/login.html");
@@ -12,6 +8,7 @@ const localID = JSON.parse(localStorage.getItem("localID")) ?? window.location.r
 const htmlLogout = document.querySelector('#htmlLogout')
 const htmlUsername = document.querySelector('#htmlUsername')
 
+window.location.reload();
 
 htmlUsername.innerText = `Welcome, ${localID.username.toUpperCase()}`
 
