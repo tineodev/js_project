@@ -9,7 +9,7 @@ const htmlUsername = document.querySelector('#htmlUsername')
 const localID = JSON.parse(localStorage.getItem('localID')) ?? window.location.replace('/login/html/login.html')
 
 
-htmlUsername.innerText = `${localID.username.toUpperCase()}`
+htmlUsername.innerText = `Welcome, ${localID.username.toUpperCase()}`
 
 async function getServices() {
   try {
@@ -55,38 +55,63 @@ async function apiGET(pm_element, pm_service, pm_function, pm_user) {
 }
 
 function listPayments(data) {
-  let id = data.service_id
-  let items = services.find((item) => item.id===id)
-  const name = items ? items.name : null
-  const logo = items ? items.logo : null
+  const id = data.service_id
+  const items = services.find((item) => item.id===id)
+  const name = items ? items.name : 'Loading'
+  const logo = items ? items.logo : 'Loading'
   return `
-  <div>Logo: ${logo}</div>
-  <img src="${logo}" style="width:150px"></img>
-  <div>Service ID: ${name}</div>
-  <div>Service ID: ${data.service_id}</div>
-  <div>Fecha pago: ${data.payment_date}</div>
-  <div>Amount: ${data.amount}</div>
-  <div>User ID(delete): ${data.user_id}</div>
-  <hr></hr>
+  <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+    <div class="portfolio-item">
+      <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4 m-auto">
+          <img src="${logo}" class="img-fluid rounded-start p-2" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">${name}</h5>
+            <p class="card-text" style="margin-bottom:0">Amount: $${data.amount}</p>
+            <!--<p class="card-text">ID User (delete): ${data.user_id}</p>-->
+            <p class="card-text"><small class="text-muted">Payment date: ${data.payment_date}</small></p>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
   `;
 }
+
 
 function listPaymentsExpired(data) {
   const id = data.service_id
   const items = services.find((item) => item.id===id)
-  const name = items ? items.name : null
-  const logo = items ? items.logo : null
+  const name = items ? items.name : 'Loading'
+  const logo = items ? items.logo : 'Loading'
   return `
-  <div>Logo: ${logo}</div>
-  <div>Service ID: ${name}</div>
-  <img src="${logo}" style="width:150px"></img>
-  <div>Fecha pago: (faltante)</div>
-  <div>Amount: ${data.amount}</div>
-  <div>Amount fee: ${data.amount_fee}</div>
-  <div>User ID(delete): ${data.user_id}</div>
-  <hr></hr>
+  <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+    <div class="portfolio-item">
+      <div class="card mb-3 border-danger" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4 m-auto">
+            <img src="${logo}" class="img-fluid rounded-start p-2" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">${name}</h5>
+              <p class="card-text" style="margin-bottom:0">Amount: $${data.amount}</p>
+              <p class="card-text text-danger">Amount fee: $${data.amount_fee}</p>
+              <!--<p class="card-text">ID User (delete): ${data.user_id}</p>-->
+              <p class="card-text"><small class="text-muted">Payment date: ${data.payment_date}</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   `;
 }
+
 
 htmlLogout.onclick = function (event) {
   localStorage.removeItem('localID')
@@ -95,5 +120,7 @@ htmlLogout.onclick = function (event) {
   window.location.reload();
 }
 
-apiGET(html_payments, 'payments', listPayments, 1);
-apiGET(html_expired, 'payments-expired', listPaymentsExpired, 1);
+apiGET(html_payments, 'payments', listPayments, localID.id);
+apiGET(html_expired, 'payments-expired', listPaymentsExpired, localID.id);
+
+windows.location.reload()
