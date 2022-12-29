@@ -2,8 +2,8 @@ const htmlSelect = document.querySelector("#html_select");
 const htmlForm = document.querySelector("#htmlForm");
 const htmlInputs = document.querySelectorAll("input");
 
-const localToken = JSON.parse(localStorage.getItem("localToken")) ?? window.location.replace("/login/html/login.html");
-const localID = JSON.parse(localStorage.getItem("localID")) ?? window.location.replace("/login/html/login.html");
+const localToken = JSON.parse(localStorage.getItem("localToken")) ?? window.location.replace("/js_project/login/html/login.html");
+const localID = JSON.parse(localStorage.getItem("localID")) ?? window.location.replace("/js_project/login/html/login.html");
 
 const htmlLogout = document.querySelector('#htmlLogout')
 const htmlUsername = document.querySelector('#htmlUsername')
@@ -87,7 +87,7 @@ htmlForm.onsubmit = async function (event) {
       }).then((result) => {
         if (result.dismiss === Swal.DismissReason.timer) {
           console.log("I was closed by the timer");
-          window.location.replace("/main/html/payments.html");
+          window.location.replace("/js_project/main/html/payments.html");
         }
       });
     } else {

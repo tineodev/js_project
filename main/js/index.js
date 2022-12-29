@@ -2,11 +2,11 @@ const html_payments = document.querySelector("#htmlPayments");
 const html_expired = document.querySelector("#htmlExpired");
 
 const services = JSON.parse(localStorage.getItem('localServices')) ?? getServices()
-const localToken = JSON.parse(localStorage.getItem('localToken')) ?? window.location.replace('/login/html/login.html')
+const localToken = JSON.parse(localStorage.getItem('localToken')) ?? window.location.replace('/js_project/login/html/login.html')
 
 const htmlLogout = document.querySelector('#htmlLogout')
 const htmlUsername = document.querySelector('#htmlUsername')
-const localID = JSON.parse(localStorage.getItem('localID')) ?? window.location.replace('/login/html/login.html')
+const localID = JSON.parse(localStorage.getItem('localID')) ?? window.location.replace('/js_project/login/html/login.html')
 
 
 htmlUsername.innerText = `Welcome, ${localID.username.toUpperCase()}`
