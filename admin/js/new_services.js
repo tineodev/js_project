@@ -8,7 +8,7 @@ const htmlLogout = document.querySelector('#htmlLogout')
 const htmlUsername = document.querySelector('#htmlUsername')
 
 
-htmlUsername.innerText = `${localID.username.toUpperCase()}`
+htmlUsername.innerText = `Welcome, ${localID.username.toUpperCase()}`
 
 if (!localID.is_staff) {
   Swal.fire("I'm sorry", "Only administrators can access", "error").then(() =>

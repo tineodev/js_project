@@ -8,7 +8,8 @@ const htmlLogout = document.querySelector('#htmlLogout')
 const htmlUsername = document.querySelector('#htmlUsername')
 
 
-htmlUsername.innerText = `${localID.username.toUpperCase()}`
+htmlUsername.innerText = `Welcome, ${localID.username.toUpperCase()}`
+
 
 if (!localID.is_staff) {
   Swal.fire(
@@ -17,6 +18,7 @@ if (!localID.is_staff) {
     'error'
   ).then(() => (window.location.replace("/main/html/index.html"))); 
 }
+
 
 async function actualizarvalores() {
   const response = await fetch(`http://127.0.0.1:8000/services/${getID('id')}/`);
@@ -37,7 +39,7 @@ html_forms.onsubmit = async function (event) {
   inputs.forEach((input) => {
     body[input.name] = input.value;
   });
-  
+
   const body_json = JSON.stringify(body);
   console.log(body_json)
   try {
