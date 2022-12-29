@@ -24,9 +24,13 @@ formLogin.onsubmit = async function (event) {
     const data = await response.json();
     console.log(data)
     if (data.detail) {
-      // !Añadir alerta
-      // console.log('error')
-      window.location.replace('/login/html/login.html')
+      Swal.fire({
+        icon: "error",
+        title: "Credentials not found",
+        text: "Please correct them and try again",
+      }).then(() => {
+          window.location.reload();
+        })
     } else {
       const responseID = await fetch(`http://127.0.0.1:8000/users/${body.username}/`);
       const dataID = await responseID.json();
