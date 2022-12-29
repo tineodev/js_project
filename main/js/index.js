@@ -13,7 +13,7 @@ htmlUsername.innerText = `Welcome, ${localID.username.toUpperCase()}`
 
 async function getServices() {
   try {
-    const url = `http://127.0.0.1:8000/services/`;
+    const url = `https://restproject-production.up.railway.app/services/`;
     const response = await fetch(url);
     const data = await response.json();
 
@@ -38,7 +38,7 @@ async function apiGET(pm_element, pm_service, pm_function, pm_user) {
         'Authorization': 'Bearer ' + localToken.access
       },
     };
-    const url = `http://127.0.0.1:8000/${pm_service}/`;
+    const url = `https://restproject-production.up.railway.app/${pm_service}/`;
     const response = await fetch(url, options);
     const data = await response.json();
 

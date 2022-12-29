@@ -20,7 +20,7 @@ formLogin.onsubmit = async function (event) {
       headers: { "Content-Type": "application/json" },
       body: body_json,
     };
-    const response = await fetch('http://127.0.0.1:8000/token/', options);
+    const response = await fetch('https://restproject-production.up.railway.app/token/', options);
     const data = await response.json();
     console.log(data)
     if (data.detail) {
@@ -32,7 +32,7 @@ formLogin.onsubmit = async function (event) {
           window.location.reload();
         })
     } else {
-      const responseID = await fetch(`http://127.0.0.1:8000/users/${body.username}/`);
+      const responseID = await fetch(`https://restproject-production.up.railway.app/users/${body.username}/`);
       const dataID = await responseID.json();
       localStorage.setItem('localID', JSON.stringify(dataID))
       localStorage.setItem('localToken', JSON.stringify(data))

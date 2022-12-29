@@ -21,7 +21,7 @@ if (!localID.is_staff) {
 
 
 async function actualizarvalores() {
-  const response = await fetch(`http://127.0.0.1:8000/services/${getID('id')}/`);
+  const response = await fetch(`https://restproject-production.up.railway.app/services/${getID('id')}/`);
   const data = await response.json()
 
   inputs.forEach((input) => {
@@ -52,7 +52,7 @@ html_forms.onsubmit = async function (event) {
       body: body_json,
     };
 
-    const response = await fetch(`http://127.0.0.1:8000/services/${getID("id")}/`, options);
+    const response = await fetch(`https://restproject-production.up.railway.app/services/${getID("id")}/`, options);
 
     if (response.ok) {
       // console.log("exito");

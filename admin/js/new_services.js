@@ -35,7 +35,7 @@ htmlForm.onsubmit = async function (event) {
       },
       body: body_json,
     };
-    const response = await fetch(`http://127.0.0.1:8000/services/`, options);
+    const response = await fetch(`https://restproject-production.up.railway.app/services/`, options);
     if (response.ok) {
       // console.log('Guardado')
 

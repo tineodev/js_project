@@ -22,7 +22,7 @@ async function apiGET() {
     };
 
     console.log(options)
-    const url = `http://127.0.0.1:8000/services/`;
+    const url = `https://restproject-production.up.railway.app/services/`;
     const response = await fetch(url, options);
     const data = await response.json();
 
@@ -62,7 +62,7 @@ htmlForm.onsubmit = async function (event) {
       body: body_json,
     };
 
-    const response = await fetch(`http://127.0.0.1:8000/payments/`, options);
+    const response = await fetch(`https://restproject-production.up.railway.app/payments/`, options);
     console.log(response)
     if (response.ok) {
       console.log("Guardado");

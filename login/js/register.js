@@ -31,7 +31,7 @@ htmlForm.onsubmit = async function (event) {
       },
       body: JSON.stringify(user),
     };
-    const response = await fetch("http://127.0.0.1:8000/users/", options);
+    const response = await fetch("https://restproject-production.up.railway.app/users/", options);
     const data = await response.json();
     console.log(response)
     console.log(data)
