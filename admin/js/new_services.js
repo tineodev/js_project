@@ -1,8 +1,8 @@
 const htmlForm = document.querySelector("form");
 const htmlInputs = document.querySelectorAll("input");
 
-const localToken = JSON.parse(localStorage.getItem("localToken")) ?? window.location.replace("/login/html/login.html");
-const localID = JSON.parse(localStorage.getItem("localID")) ?? window.location.replace("/login/html/login.html");
+const localToken = JSON.parse(localStorage.getItem("localToken")) ?? window.location.replace("/js_project/login/html/login.html");
+const localID = JSON.parse(localStorage.getItem("localID")) ?? window.location.replace("/js_project/login/html/login.html");
 
 const htmlLogout = document.querySelector('#htmlLogout')
 const htmlUsername = document.querySelector('#htmlUsername')
