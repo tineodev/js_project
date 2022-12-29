@@ -8,7 +8,6 @@ const localID = JSON.parse(localStorage.getItem("localID")) ?? window.location.r
 const htmlLogout = document.querySelector('#htmlLogout')
 const htmlUsername = document.querySelector('#htmlUsername')
 
-window.location.reload();
 
 htmlUsername.innerText = `Welcome, ${localID.username.toUpperCase()}`
 
