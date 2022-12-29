@@ -1,20 +1,19 @@
 const htmlSelect = document.querySelector("#html_select");
 
-const htmlForm = document.querySelector("form");
-const htmlInputs = document.querySelectorAll("input");
+const htmlForm = document.querySelector("#htmlForm");
 
-const localToken =
-  JSON.parse(localStorage.getItem("localToken")) ??
-  window.location.replace("/login/html/login.html");
-const localID =
-  JSON.parse(localStorage.getItem("localID")) ??
-  window.location.replace("/login/html/login.html");
+const htmlInputs = document.querySelectorAll("input");
+console.log(htmlForm)
+console.log(htmlInputs)
+
+const localToken = JSON.parse(localStorage.getItem("localToken")) ?? window.location.replace("/login/html/login.html");
+const localID = JSON.parse(localStorage.getItem("localID")) ?? window.location.replace("/login/html/login.html");
 
 const htmlLogout = document.querySelector('#htmlLogout')
 const htmlUsername = document.querySelector('#htmlUsername')
 
 
-htmlUsername.innerText = `${localID.username.toUpperCase()}`
+htmlUsername.innerText = `Welcome, ${localID.username.toUpperCase()}`
 
 async function apiGET() {
   try {
@@ -26,9 +25,11 @@ async function apiGET() {
       },
     };
 
+    console.log(options)
     const url = `http://127.0.0.1:8000/services/`;
     const response = await fetch(url, options);
     const data = await response.json();
+
 
     console.log(data);
 
@@ -40,7 +41,6 @@ async function apiGET() {
   }
 }
 
-apiGET();
 
 htmlForm.onsubmit = async function (event) {
   event.preventDefault();
@@ -67,8 +67,9 @@ htmlForm.onsubmit = async function (event) {
     };
 
     const response = await fetch(`http://127.0.0.1:8000/payments/`, options);
+    console.log(response)
     if (response.ok) {
-      // console.log("Guardado");
+      console.log("Guardado");
 
       let timerInterval;
       Swal.fire({
@@ -90,7 +91,7 @@ htmlForm.onsubmit = async function (event) {
       }).then((result) => {
         if (result.dismiss === Swal.DismissReason.timer) {
           console.log("I was closed by the timer");
-          window.location.replace("/");
+          // window.location.replace("/main/html/payments.html");
         }
       });
     } else {
@@ -110,6 +111,9 @@ htmlForm.onsubmit = async function (event) {
     console.log(error);
   }
 };
+
+apiGET();
+
 
 htmlLogout.onclick = function (event) {
   localStorage.removeItem('localID')

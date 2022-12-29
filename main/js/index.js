@@ -102,7 +102,7 @@ function listPaymentsExpired(data) {
               <p class="card-text" style="margin-bottom:0">Amount: $${data.amount}</p>
               <p class="card-text text-danger">Amount fee: $${data.amount_fee}</p>
               <!--<p class="card-text">ID User (delete): ${data.user_id}</p>-->
-              <p class="card-text"><small class="text-muted">Payment date: ${data.payment_date}</small></p>
+              <p class="card-text"><small class="text-muted">Payment date: 'pendiente'</small></p>
             </div>
           </div>
         </div>
