@@ -22,7 +22,6 @@ htmlForm.onsubmit = async function (event) {
     username: username,
     email: email,
     password: password1,
-    password2: password2,
   };
 
   try {

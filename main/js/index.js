@@ -123,4 +123,3 @@ htmlLogout.onclick = function (event) {
 apiGET(html_payments, 'payments', listPayments, localID.id);
 apiGET(html_expired, 'payments-expired', listPaymentsExpired, localID.id);
 
-windows.location.reload()

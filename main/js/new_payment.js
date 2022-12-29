@@ -87,7 +87,7 @@ htmlForm.onsubmit = async function (event) {
       }).then((result) => {
         if (result.dismiss === Swal.DismissReason.timer) {
           console.log("I was closed by the timer");
-          // window.location.replace("/main/html/payments.html");
+          window.location.replace("/main/html/payments.html");
         }
       });
     } else {
